@@ -1,0 +1,101 @@
+@use '../utils/variables';
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  width: auto;
+  border-radius: variables.$border-radius;
+  font-weight: variables.$font-weight-semibold;
+  min-width: 2.5rem;
+
+  // Color schemes
+  &--primary {
+    border: none;
+    background: variables.$primary-gradient;
+    color: variables.$white;
+  
+    // &:hover:not(:disabled),
+    // &:focus:not(:disabled),
+    // &:active:not(:disabled) {
+    //   background: variables.$primary;
+    // }
+  }
+
+  // Variants
+  &--outline#{&}--primary {
+    // color: var(--primary);
+    background: none;
+  
+    &:hover:not(:disabled),
+    &:focus:not(:disabled),
+    &:active:not(:disabled) {
+      // color: var(--primary-hover);
+      // border-color: var(--primary-hover);
+      background: none;
+    }
+  }
+
+  // Sizes
+  &--sm {
+    font-size: variables.$font-size-sm;
+    height: 2rem;
+  
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+
+    &-icon {
+      font-size: variables.$font-size-sm;
+      height: 2rem;
+      width: 2rem;
+    };
+  }
+
+  &--md {
+    font-size: variables.$font-size-md;
+    height: 2.5rem;
+  
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    &-icon {
+      font-size: variables.$font-size-md;
+      height: 2.5rem;
+      width: 2.5rem;
+    };
+  }
+
+  &--lg {
+    font-size: variables.$font-size-lg;
+    height: 3rem;
+  
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  
+    &-icon {
+      font-size: variables.$font-size-lg;
+      height: 3rem;
+      width: 3rem;
+    };
+  }
+
+  // Rounded
+  &--rounded {
+    border-radius: 32px;
+  }
+
+  // Fullwidth
+  &--fullwidth {
+    width: 100%;
+  }
+
+  // Disabled
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}

@@ -1,0 +1,15 @@
+@use '../utils/variables';
+@use '../utils//mixins';
+
+body {
+  background: variables.$background;
+  color: variables.$white;
+
+  font-size: variables.$font-size-body;
+  font-family: variables.$font-family-body;
+  line-height: variables.$line-height-body;
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
+}
