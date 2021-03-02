@@ -1,0 +1,25 @@
+@use '../utils/variables';
+
+$transition-ease-in: 0.2s ease-in;
+
+.button-spinner-enter {
+  width: 0;
+  opacity: 0;
+}
+
+.button-spinner-enter.button-spinner-enter-active {
+  width: 28px;
+  opacity: 1;
+  transition: opacity $transition-ease-in, width variables.$transition-normal;
+}
+
+.button-spinner-exit {
+  width: 28px;
+  opacity: 1;
+}
+
+.button-spinner-exit-active {
+  width: 0;
+  opacity: 0;
+  transition: opacity $transition-ease-in, width variables.$transition-normal;
+}

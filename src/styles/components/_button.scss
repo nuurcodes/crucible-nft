@@ -13,34 +13,34 @@
   font-weight: variables.$font-weight-semibold;
   min-width: 2.5rem;
 
-  // Color schemes
   &--primary {
     border: none;
     background: variables.$primary-gradient;
     color: variables.$white;
   
-    // &:hover:not(:disabled),
-    // &:focus:not(:disabled),
-    // &:active:not(:disabled) {
-    //   background: variables.$primary;
-    // }
+    &:hover:not(:disabled),
+    &:focus:not(:disabled),
+    &:active:not(:disabled) {
+      box-shadow: 0px 14px 21px rgba(0, 0, 0, 0.11),
+    }
   }
 
-  // Variants
   &--outline#{&}--primary {
-    // color: var(--primary);
     background: none;
+    color: variables.$primary;
+    box-shadow: inset 0 0 0 2px variables.$primary;
   
     &:hover:not(:disabled),
     &:focus:not(:disabled),
     &:active:not(:disabled) {
-      // color: var(--primary-hover);
-      // border-color: var(--primary-hover);
+      color: variables.$white;
       background: none;
+      box-shadow: 
+        inset 0 0 0 2px variables.$white,
+        0px 14px 21px rgba(0, 0, 0, 0.11),
     }
   }
 
-  // Sizes
   &--sm {
     font-size: variables.$font-size-sm;
     height: 2rem;
@@ -83,19 +83,25 @@
     };
   }
 
-  // Rounded
   &--rounded {
     border-radius: 32px;
   }
 
-  // Fullwidth
   &--fullwidth {
     width: 100%;
   }
 
-  // Disabled
   &:disabled {
     cursor: not-allowed;
     opacity: 0.6;
+  }
+
+  &__spinner {
+    display: flex;
+
+    &__icon {
+      font-size: 1.25rem;
+      margin-right: 0.5rem;
+    }
   }
 }
