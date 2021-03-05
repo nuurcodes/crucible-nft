@@ -1,4 +1,4 @@
-import Button from './components/base/button';
+import { Button } from '@chakra-ui/react';
 
 function App () {
   return (
