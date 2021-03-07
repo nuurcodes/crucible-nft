@@ -4,6 +4,7 @@ import App from './App';
 import theme from './config/theme';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
+import './styles/onboard.css';
 
 ReactDOM.render(
   <React.StrictMode>

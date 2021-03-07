@@ -1,0 +1,11 @@
+.bn-onboard-custom.bn-onboard-dark-mode {
+  background: #222B40 !important;
+}
+
+.bn-onboard-custom.bn-onboard-dark-mode-background-hover:hover {
+  background: #517BF6 !important;
+}
+
+.bn-onboard-selected-wallet {
+  background: #50A7F7 !important;
+}

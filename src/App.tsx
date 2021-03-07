@@ -17,11 +17,70 @@ import BgBlur from './components/shared/blur';
 import Divider from './svg/divider.svg';
 import Emoji from './components/shared/emoji';
 import Footer from './components/layout/footer';
+import { ethers } from 'ethers';
+import { useEffect, useState } from 'react';
+import { initNotify, initOnboard } from './services/blocknative';
+
+let provider: any;
 
 function App () {
+  // TODO Updating types
+  const [address, setAddress] = useState<any>(null);
+  const [network, setNetwork] = useState<any>(null);
+  const [balance, setBalance] = useState<any>(null);
+  const [wallet, setWallet] = useState<any>({});
+
+  const [onboard, setOnboard] = useState<any>(null);
+  const [notify, setNotify] = useState<any>(null);
+
+  // TODO: Make this a react hook
+  useEffect(() => {
+    const onboard = initOnboard({
+      address: setAddress,
+      network: setNetwork,
+      balance: setBalance,
+      wallet: (wallet: any) => {
+        if (wallet.provider) {
+          setWallet(wallet);
+
+          const ethersProvider = new ethers.providers.Web3Provider(
+            wallet.provider
+          );
+
+          provider = ethersProvider;
+
+          window.localStorage.setItem('selectedWallet', wallet.name);
+        } else {
+          provider = null;
+          setWallet({});
+        }
+      }
+    });
+
+    setOnboard(onboard);
+    setNotify(initNotify());
+  }, []);
+
+  useEffect(() => {
+    const previouslySelectedWallet = window.localStorage.getItem(
+      'selectedWallet'
+    );
+
+    if (previouslySelectedWallet && onboard) {
+      onboard.walletSelect(previouslySelectedWallet);
+    }
+  }, [onboard]);
+
+  if (!onboard || !notify) {
+    return null;
+  }
+
   return (
     <Flex direction="column" minH="100vh">
       <BgBlur />
+      <div>Address: {address}</div>
+      <div>Network: {network}</div>
+      <div>Balance: {balance ? balance + ' ETH' : ''}</div>
       <Box role="main" flexGrow={1}>
         <Container maxW="5xl">
           <Heading as="h1" size="3xl" textAlign="center" my={28}>
@@ -42,9 +101,23 @@ function App () {
                   liquidity potion
                 </Link>
               </Text>
-              <Button size="lg" mb={8} variant="gradient" isFullWidth>
-                Connect wallet
+              <Button
+                size="lg"
+                mb={8}
+                variant="gradient"
+                isFullWidth
+                onClick={
+                  wallet && provider
+                    ? () => onboard.walletReset()
+                    : () => onboard.walletSelect()
+                }
+              >
+                {wallet && provider ? 'Disconnect wallet' : 'Connect wallet'}
               </Button>
+
+              {wallet.provider && (
+                <Button onClick={onboard.walletCheck}>Wallet check</Button>
+              )}
 
               <Heading as="h2" size="lg">
                 Deposit
