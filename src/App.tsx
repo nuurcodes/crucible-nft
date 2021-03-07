@@ -94,7 +94,7 @@ function App () {
               <Text py={4}>
                 <Emoji label="alembic" symbol="⚗️" />{' '}
                 <Link color="brand.500" href="#">
-                  alchemy
+                  alchemist
                 </Link>{' '}
                 (4%) + Ξ ethereum (96%) mix into a{' '}
                 <Link color="brand.500" href="#">
@@ -123,7 +123,7 @@ function App () {
                 Deposit
               </Heading>
               <Text py={4}>
-                Deposit <Emoji label="alembic" symbol="⚗️" /> alchemy and Ξ
+                Deposit <Emoji label="alembic" symbol="⚗️" /> alchemist and Ξ
                 ethereum into{' '}
                 <Link color="brand.500" href="#">
                   this
@@ -159,7 +159,7 @@ function App () {
                         h="1.75rem"
                         size="sm"
                         variant="outline"
-                        colorScheme="primary"
+                        colorScheme="brand"
                       >
                         Max
                       </Button>
