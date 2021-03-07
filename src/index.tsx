@@ -1,14 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import theme from './config/theme';
 import reportWebVitals from './reportWebVitals';
-
-import './styles/main.scss';
-import 'focus-visible';
+import { ChakraProvider } from '@chakra-ui/react';
+import './styles/onboard.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ChakraProvider theme={theme}>
+      <App />
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
