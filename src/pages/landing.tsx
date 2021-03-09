@@ -30,6 +30,8 @@ function App () {
     address,
     network,
     balance,
+    stakingTokenBalance,
+    lpTokenTokenBalance,
     wallet,
     onboard,
     notify
@@ -44,7 +46,9 @@ function App () {
       <BgBlur />
       <div>Address: {address}</div>
       <div>Network: {network}</div>
-      <div>Balance: {balance ? balance / 1000000000000000000 + ' ETH' : ''}</div>
+      <div>Ether Balance: {balance ? balance / 1000000000000000000 + ' ETH' : ''}</div>
+      <div>Staking Token Balance: {stakingTokenBalance ? stakingTokenBalance / 1000000000000000000 + ' TOKENS' : ''}</div>
+      <div>LP Token Balance: {lpTokenTokenBalance ? lpTokenTokenBalance / 1000000000000000000 + ' TOKENS' : ''}</div>
       <Box role="main" flexGrow={1}>
         <Container maxW="5xl">
           <Heading as="h1" size="3xl" textAlign="center" my={28}>

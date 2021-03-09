@@ -123,6 +123,7 @@ const StakeButton = ({provider, ...props}: StakeProps) => {
     variant="gradient"
     borderTopLeftRadius={0}
     borderBottomLeftRadius={0}
+    handleClick={handleClick}
   >
     Mint NFT
   </Button>
