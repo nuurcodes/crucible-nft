@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-const Etherscan = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
+const Etherscan = ({ ...props }: React.SVGProps<SVGSVGElement>): ReactElement => {
   return (
     <svg
       width="48"

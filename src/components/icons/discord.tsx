@@ -1,6 +1,6 @@
-import React from 'react';
+import { ReactElement } from 'react';
 
-const Discord = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
+const Discord = ({ ...props }: React.SVGProps<SVGSVGElement>): ReactElement => {
   return (
     <svg
       width="48"
