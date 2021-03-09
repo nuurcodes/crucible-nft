@@ -17,59 +17,18 @@ import BgBlur from './components/shared/blur';
 import Divider from './svg/divider.svg';
 import Emoji from './components/shared/emoji';
 import Footer from './components/layout/footer';
-import { ethers } from 'ethers';
-import { useEffect, useState } from 'react';
-import { initNotify, initOnboard } from './services/blocknative';
-
-let provider: any;
+import { useWallet } from './context/wallet-context';
 
 function App () {
-  // TODO Updating types
-  const [address, setAddress] = useState<any>(null);
-  const [network, setNetwork] = useState<any>(null);
-  const [balance, setBalance] = useState<any>(null);
-  const [wallet, setWallet] = useState<any>({});
-
-  const [onboard, setOnboard] = useState<any>(null);
-  const [notify, setNotify] = useState<any>(null);
-
-  // TODO: Make this a react hook
-  useEffect(() => {
-    const onboard = initOnboard({
-      address: setAddress,
-      network: setNetwork,
-      balance: setBalance,
-      wallet: (wallet: any) => {
-        if (wallet.provider) {
-          setWallet(wallet);
-
-          const ethersProvider = new ethers.providers.Web3Provider(
-            wallet.provider
-          );
-
-          provider = ethersProvider;
-
-          window.localStorage.setItem('selectedWallet', wallet.name);
-        } else {
-          provider = null;
-          setWallet({});
-        }
-      }
-    });
-
-    setOnboard(onboard);
-    setNotify(initNotify());
-  }, []);
-
-  useEffect(() => {
-    const previouslySelectedWallet = window.localStorage.getItem(
-      'selectedWallet'
-    );
-
-    if (previouslySelectedWallet && onboard) {
-      onboard.walletSelect(previouslySelectedWallet);
-    }
-  }, [onboard]);
+  const {
+    provider,
+    address,
+    network,
+    balance,
+    wallet,
+    onboard,
+    notify
+  } = useWallet();
 
   if (!onboard || !notify) {
     return null;
