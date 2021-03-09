@@ -1,9 +1,11 @@
+import { ReactElement } from "react";
+
 type Props = {
   label: string;
   symbol: string;
 };
 
-function Emoji (props: Props) {
+function Emoji (props: Props): ReactElement {
   return (
     <span
       className="emoji"

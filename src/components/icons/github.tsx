@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-const Github = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
+const Github = ({ ...props }: React.SVGProps<SVGSVGElement>): ReactElement => {
   return (
     <svg
       width="48"

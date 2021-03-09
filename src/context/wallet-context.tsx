@@ -3,12 +3,11 @@ import {
   useEffect,
   useContext,
   createContext,
-  ReactNode
+  ReactElement
 } from 'react';
-import { initNotify, initOnboard } from '../services/blocknative';
 import { ethers } from 'ethers';
+import { initNotify, initOnboard } from '../services/blocknative';
 import IUniswapV2ERC20 from '../contracts/IUniswapV2ERC20.json';
-
 
 // TODO: Add typings
 type WalletProviderContext = {
@@ -23,12 +22,13 @@ type WalletProviderContext = {
   notify: any;
 }
 
-type WalletProviderProps = { children: ReactNode };
+type WalletProviderProps = { children: ReactElement };
+
 const WalletStateContext = createContext<WalletProviderContext | undefined>(
   undefined
 );
 
-function WalletProvider ({ children }: WalletProviderProps) {
+function WalletProvider ({ children }: WalletProviderProps): ReactElement {
   const [provider, setProvider] = useState<any>(null);
   const [address, setAddress] = useState<any>(null);
   const [network, setNetwork] = useState<any>(null);
@@ -109,11 +109,13 @@ function WalletProvider ({ children }: WalletProviderProps) {
     </WalletStateContext.Provider>
   );
 }
-function useWallet () {
+
+function useWallet (): WalletProviderContext {
   const context = useContext(WalletStateContext);
   if (context === undefined) {
     throw new Error('useWallet must be used within a WalletProvider');
   }
   return context;
 }
+
 export { WalletProvider, useWallet };

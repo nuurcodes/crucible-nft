@@ -8,7 +8,7 @@ import {
   LinkOverlay,
   Text
 } from '@chakra-ui/layout';
-import Waves from '../../svg/waves.svg';
+import { ReactElement } from 'react';
 import DiscordIcon from '../icons/discord';
 import EtherscanIcon from '../icons/etherscan';
 import GithubIcon from '../icons/github';
@@ -21,12 +21,11 @@ const links = [
   { label: 'Uniswap', icon: <UniswapIcon />, to: '' }
 ];
 
-function Footer () {
+function Footer (): ReactElement {
   return (
     <Box
       pt={36}
       pb={16}
-      bgImage={`url(${Waves})`}
       bgPosition="center"
       bgRepeat="no-repeat"
       bgSize="cover"
