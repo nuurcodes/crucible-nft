@@ -4,12 +4,15 @@ import App from './App';
 import theme from './config/theme';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
+import { WalletProvider } from './context/wallet-context';
 import './styles/onboard.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <App />
+      <WalletProvider>
+        <App />
+      </WalletProvider>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')
