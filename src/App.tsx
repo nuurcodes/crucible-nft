@@ -80,7 +80,7 @@ function App () {
       <BgBlur />
       <div>Address: {address}</div>
       <div>Network: {network}</div>
-      <div>Balance: {balance ? balance + ' ETH' : ''}</div>
+      <div>Balance: {balance ? balance / 1000000000000000000 + ' ETH' : ''}</div>
       <Box role="main" flexGrow={1}>
         <Container maxW="5xl">
           <Heading as="h1" size="3xl" textAlign="center" my={28}>
